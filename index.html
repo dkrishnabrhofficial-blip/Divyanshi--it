@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divyanshi IT | Creative Tech & Digital Agency</title>
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-dark: #07040d;
+            --card-glass: rgba(26, 16, 43, 0.65);
+            --border-glass: rgba(168, 85, 247, 0.3);
+            --purple-glow: #9333ea;
+            --accent-violet: #c084fc;
+            --cyan-glow: #06b6d4;
+            --text-bright: #ffffff;
+            --text-dim: #a1a1aa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-bright);
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(147, 51, 234, 0.22) 0%, transparent 45%),
+                radial-gradient(circle at 90% 70%, rgba(6, 182, 212, 0.18) 0%, transparent 45%);
+            background-attachment: fixed;
+        }
+
+        /* Glassmorphism Reusable Class */
+        .glass-box {
+            background: var(--card-glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-glass);
+            border-radius: 24px;
+            box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.5);
+        }
+
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1200px;
+            z-index: 1000;
+            padding: 16px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand-logo {
+            font-size: 26px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff, var(--accent-violet));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-violet);
+        }
+
+        .insta-btn {
+            background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+            color: white;
+            padding: 10px 22px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 0 20px rgba(253, 29, 29, 0.3);
+            transition: 0.3s;
+        }
+
+        .insta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(253, 29, 29, 0.6);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 150px 20px 80px 20px;
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: 900px;
+        }
+
+        .hero-badge {
+            background: rgba(147, 51, 234, 0.2);
+            border: 1px solid var(--purple-glow);
+            color: var(--accent-violet);
+            padding: 8px 22px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            display: inline-block;
+            letter-spacing: 0.5px;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            line-height: 1.2;
+            font-weight: 800;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--accent-violet), var(--cyan-glow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 19px;
+            color: var(--text-dim);
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-main {
+            background: linear-gradient(135deg, var(--purple-glow), var(--cyan-glow));
+            color: white;
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 15px;
+            box-shadow: 0 0 25px rgba(147, 51, 234, 0.5);
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-main:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 35px rgba(147, 51, 234, 0.8);
+        }
+
+        .btn-outline {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: var(--text-bright);
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: var(--accent-violet);
+        }
+
+        /* Section Setup */
+        .container {
+            padding: 90px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .sec-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .sec-title h2 {
+            font-size: 40px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .sec-title p {
+            color: var(--text-dim);
+            font-size: 17px;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            padding: 40px 30px;
+            transition: 0.4s;
+            position: relative;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-violet);
+            box-shadow: 0 15px 45px rgba(147, 51, 234, 0.35);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(147, 51, 234, 0.2);
+            border: 1px solid var(--purple-glow);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            color: var(--accent-violet);
+            margin-bottom: 24px;
+        }
+
+        .service-card h3 {
+            font-size: 24px;
+            margin-bottom: 14px;
+        }
+
+        .service-card p {
+            color: var(--text-dim);
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        /* Tag List */
+        .tag-list {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 18px;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--accent-violet);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .contact-card {
+            padding: 35px 25px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .contact-card:hover {
+            border-color: var(--cyan-glow);
+            transform: translateY(-50px);
+        }
+
+        .contact-card i {
+            font-size: 36px;
+            color: var(--cyan-glow);
+            margin-bottom: 18px;
+        }
+
+        .contact-card h4 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .contact-card a, .contact-card p {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .contact-card a:hover {
+            color: var(--accent-violet);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-dim);
+            font-size: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero h1 { font-size: 38px; }
+            .sec-title h2 { font-size: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="glass-box">
+        <div class="brand-logo">
+            <i class="fa-solid fa-code"></i> Divyanshi IT
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Our Services</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+        </ul>
+        <a href="https://instagram.com/sdivyanshi900" target="_blank" class="insta-btn">
+            <i class="fa-brands fa-instagram"></i> @sdivyanshi900
+        </a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-inner">
+            <span class="hero-badge">✨ Divyanshi IT Solutions & Creative Studio</span>
+            <h1>We Build High-Impact <span>Glassmorphic Websites</span>, Apps & Digital Content</h1>
+            <p>Aapki saari IT aur Creative requirements ek hi jagah! Web Apps, Landing Pages, Brand Logo Design se lekar Wedding Short Video Clips tak — sab kuch high quality me deliver karte hain.</p>
+            <div class="btn-group">
+                <a href="#contact" class="btn-main"><i class="fa-solid fa-paper-plane"></i> Hire Us for Project</a>
+                <a href="https://instagram.com/sdivyanshi900" target="_blank" class="btn-outline"><i class="fa-brands fa-instagram"></i> View Instagram Work</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="container">
+        <div class="sec-title">
+            <h2>Our Specialized Services</h2>
+            <p>Hum kya-kya bana kar dete hain — Detail Service Breakdown</p>
+        </div>
+
+        <div class="services-grid">
+            
+            <!-- Service 1 -->
+            <div class="glass-box service-card">
+                <div class="service-icon"><i class="fa-solid fa-gem"></i></div>
+                <h3>Glassmorphic Websites</h3>
+                <p>Dark-mode luxury aesthetic websites with smooth frosted glass design, fluid animations, and high performance across mobile & laptop.</p>
+                <div class="tag-list">
+                    <span class="tag">Glass UI</span>
+                    <span class="tag">Dark Aesthetic</span>
+                    <span class="tag">Modern Design</span>
+                </div>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="glass-box service-card">
+                <div class="service-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                <h3>Web & Mobile Apps</h3>
+                <p>Interactive, responsive web applications and clean dashboards designed to solve real business and tech problem statements.</p>
+                <div class="tag-list">
+                    <span class="tag">Full Stack</span>
+                    <span class="tag">Dashboards</span>
+                    <span class="tag">UI/UX</span>
+                </div>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="glass-box service-card">
+                <div class="service-icon"><i class="fa-solid fa-rocket"></i></div>
+                <h3>Landing Pages</h3>
+                <p>High-converting sales & portfolio landing pages tailored specifically for business growth, products, and individual branding.</p>
+                <div class="tag-list">
+                    <span class="tag">Lead Gen</span>
+                    <span class="tag">Responsive</span>
+                    <span class="tag">High Converting</span>
+                </div>
+            </div>
+
+            <!-- Service 4 -->
+            <div class="glass-box service-card">
+                <div class="service-icon"><i class="fa-solid fa-pen-nib"></i></div>
+                <h3>Brand Logo Design</h3>
+                <p>Creative, modern, and minimal logo designs that give your business/brand a professional visual identity.</p>
+                <div class="tag-list">
+                    <span class="tag">Monogram</span>
+                    <span class="tag">Tech Logos</span>
+                    <span class="tag">Brand Identity</span>
+                </div>
+            </div>
+
+            <!-- Service 5 -->
+            <div class="glass-box service-card">
+                <div class="service-icon"><i class="fa-solid fa-video"></i></div>
+                <h3>Wedding Short Clips Video Editing</h3>
+                <p>Aesthetic, emotional, and cinematic wedding short video clips & Instagram Reels with smooth transitions & color grading.</p>
+                <div class="tag-list">
+                    <span class="tag">Reels</span>
+                    <span class="tag">Cinematic</span>
+                    <span class="tag">Color Grading</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="container">
+        <div class="sec-title">
+            <h2>Get In Touch</h2>
+            <p>Direct project order ya freelance requirement ke liye contact karein</p>
+        </div>
+
+        <div class="contact-grid">
+            <!-- Phone -->
+            <div class="glass-box contact-card">
+                <i class="fa-solid fa-phone-volume"></i>
+                <h4>Phone / WhatsApp</h4>
+                <a href="tel:9555898399">+91 9555898399</a>
+            </div>
+
+            <!-- Email -->
+            <div class="glass-box contact-card">
+                <i class="fa-solid fa-envelope"></i>
+                <h4>Official Email</h4>
+                <a href="mailto:dkrishnabrh.official@gmail.com">dkrishnabrh.official@gmail.com</a>
+            </div>
+
+            <!-- Instagram -->
+            <div class="glass-box contact-card">
+                <i class="fa-brands fa-instagram"></i>
+                <h4>Instagram Profile</h4>
+                <a href="https://instagram.com/sdivyanshi900" target="_blank">@sdivyanshi900</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Divyanshi IT. All Rights Reserved. Built with Modern Dark Glassmorphic Technology.</p>
+    </footer>
+
+</body>
+</html>
